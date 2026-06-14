@@ -1,7 +1,7 @@
 "use client";
 import React from 'react';
 import Image from 'next/image';
-import { useCart } from '@/context/CartContext';
+import { useCart, Product } from '@/context/CartContext';
 import { useRouter } from 'next/navigation';
 
 const Shop = () => {
@@ -23,7 +23,7 @@ const Shop = () => {
   { id: 12, name: 'Heirloom Stitch', price: 1800, image: '/r2.jpg' },
 ];
 
-  const handleBuyNow = (item: any) => {
+  const handleBuyNow = (item: Product) => {
     addToCart(item);
     router.push('/checkout');
   };

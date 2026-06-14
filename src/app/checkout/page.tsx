@@ -2,7 +2,6 @@
 import React from "react";
 import { useCart } from "@/context/CartContext";
 import { useRouter } from "next/navigation";
-import Image from "next/image";
 
 const CheckoutPage = () => {
   const { cart, totalPrice, clearCart } = useCart();
@@ -19,14 +18,6 @@ const CheckoutPage = () => {
       </div>
     );
   }
-
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    // FormSubmit handles the email, we just clear the cart on success
-    // In a real scenario, you might want to preventDefault, send via fetch, then redirect
-    // But for simplicity with FormSubmit, we'll let it redirect to thankpage
-    // and we clear the cart there or just before it redirects.
-    // clearCart(); 
-  };
 
   return (
     <div className="contact-section">

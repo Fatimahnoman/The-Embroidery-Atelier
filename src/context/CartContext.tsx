@@ -14,9 +14,16 @@ type ToastType = {
   message: string;
 };
 
+export type Product = {
+  id: number;
+  name: string;
+  price: number;
+  image: string;
+};
+
 type CartContextType = {
   cart: CartItem[];
-  addToCart: (item: any) => void;
+  addToCart: (item: Product) => void;
   removeFromCart: (id: number) => void;
   clearCart: () => void;
   cartCount: number;
@@ -56,7 +63,7 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
     }
   }, [cart]);
 
-  const addToCart = (item: any) => {
+  const addToCart = (item: Product) => {
     try {
       setCart((prevCart) => {
         const existingItem = prevCart.find((i) => i.id === item.id);
