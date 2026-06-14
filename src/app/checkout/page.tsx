@@ -27,17 +27,22 @@ const CheckoutPage = () => {
 
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '30px', alignItems: 'start' }} className="form-row">
           {/* Order Summary */}
-          <div style={{ backgroundColor: 'white', padding: '20px', borderRadius: '15px', color: 'black' }}>
-            <h3 style={{marginBottom: '15px'}}>Order Summary</h3>
-            {cart.map((item) => (
-              <div key={item.id} style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '10px', borderBottom: '1px solid #eee', paddingBottom: '5px' }}>
-                <span>{item.name} (x{item.quantity})</span>
-                <span>Rs {item.price * item.quantity}</span>
-              </div>
-            ))}
-            <div style={{ marginTop: '20px', fontSize: '1.2rem', fontWeight: 'bold', display: 'flex', justifyContent: 'space-between' }}>
-              <span>Total:</span>
-              <span>Rs {totalPrice}</span>
+          <div style={{ backgroundColor: 'white', padding: '25px', borderRadius: '15px', color: 'black', boxShadow: '0 4px 6px rgba(0,0,0,0.1)' }}>
+            <h3 style={{ marginBottom: '20px', borderBottom: '2px solid #rgb(175, 48, 109)', paddingBottom: '10px' }}>Order Summary</h3>
+            <div style={{ maxHeight: '300px', overflowY: 'auto', marginBottom: '20px' }}>
+              {cart.map((item) => (
+                <div key={item.id} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '15px', paddingBottom: '10px', borderBottom: '1px solid #f0f0f0' }}>
+                  <div style={{ display: 'flex', flexDirection: 'column' }}>
+                    <span style={{ fontWeight: '600', fontSize: '1.1rem' }}>{item.name}</span>
+                    <span style={{ color: '#666', fontSize: '0.9rem' }}>Quantity: {item.quantity}</span>
+                  </div>
+                  <span style={{ fontWeight: 'bold' }}>Rs {item.price * item.quantity}</span>
+                </div>
+              ))}
+            </div>
+            <div style={{ marginTop: '20px', fontSize: '1.3rem', fontWeight: 'bold', display: 'flex', justifyContent: 'space-between', borderTop: '2px solid #eee', paddingTop: '15px' }}>
+              <span>Total Bill:</span>
+              <span style={{ color: 'rgb(175, 48, 109)' }}>Rs {totalPrice}</span>
             </div>
           </div>
 
@@ -47,14 +52,19 @@ const CheckoutPage = () => {
             method="POST"
             className="contact-form"
             onSubmit={() => {
-                // Clear cart locally when submitting
                 setTimeout(() => clearCart(), 1000);
             }}
           >
             <input type="hidden" name="_captcha" value="false" />
             <input type="hidden" name="_next" value="https://the-embroidery-atelier.vercel.app/thankpage" />
-            <input type="hidden" name="Order Details" value={cart.map(i => `${i.name} x${i.quantity}`).join(', ')} />
-            <input type="hidden" name="Total Amount" value={`Rs ${totalPrice}`} />
+
+            {/* Detailed Order List for Email */}
+            <input 
+              type="hidden" 
+              name="Items Ordered" 
+              value={cart.map(item => `${item.name} (Qty: ${item.quantity})`).join(' | ')} 
+            />
+            <input type="hidden" name="Total Payable" value={`Rs ${totalPrice}`} />
 
             <input type="text" name="name" placeholder="Full Name" required className="input-field" />
             <input type="email" name="email" placeholder="Email Address" required className="input-field" />
