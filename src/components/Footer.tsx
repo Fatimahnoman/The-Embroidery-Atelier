@@ -14,7 +14,7 @@ const Footer = () => {
             <a href="https://instagram.com/YOUR_USERNAME" target="_blank" rel="noopener noreferrer" style={{ color: 'white', fontSize: '24px' }}>
               <FaInstagram />
             </a>
-            <a href="https://wa.me/923000000000" target="_blank" rel="noopener noreferrer" style={{ color: 'white', fontSize: '24px' }}>
+            <a href="https://wa.me/923182781890" target="_blank" rel="noopener noreferrer" style={{ color: 'white', fontSize: '24px' }}>
               <FaWhatsapp />
             </a>
           </div>
