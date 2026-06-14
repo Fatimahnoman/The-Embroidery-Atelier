@@ -11,7 +11,7 @@ const Footer = () => {
           <h2>The Embroidery Atelier</h2>
           <p>Where your name meets elegance — thread by thread.</p>
           <div style={{ display: 'flex', gap: '15px', marginTop: '15px' }}>
-            <a href="https://instagram.com/YOUR_USERNAME" target="_blank" rel="noopener noreferrer" style={{ color: 'white', fontSize: '24px' }}>
+            <a href="https://www.instagram.com/fatimah_noman1209" target="_blank" rel="noopener noreferrer" style={{ color: 'white', fontSize: '24px' }}>
               <FaInstagram />
             </a>
             <a href="https://wa.me/923182781890" target="_blank" rel="noopener noreferrer" style={{ color: 'white', fontSize: '24px' }}>
