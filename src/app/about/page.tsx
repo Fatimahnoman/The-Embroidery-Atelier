@@ -10,7 +10,7 @@ const About = () => {
   <div className='abcn' data-aos="fade-up">
     <h2 className='head' data-aos="fade-right">About Us</h2>
     <p data-aos="fade-right">
-      Welcome to <strong>Threaded Grace</strong>,<br />
+      Welcome to <strong>The Embroidery Atelier</strong>,<br />
       Where every handkerchief is more than just fabric — it’s a story, stitched with love.
       <br /><br />
       We specialize in hand-embroidered customized handkerchiefs, made with care, elegance, and your name at heart.

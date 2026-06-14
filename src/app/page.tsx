@@ -6,7 +6,7 @@ import AOS from "aos";
 import { useEffect } from "react";
 import About from "./about/page";
 import Contact from "./contact/page";
-import Shop from "./shop/page"
+import Shop from "@/components/Shop";
  
 
 

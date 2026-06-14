@@ -21,7 +21,7 @@ const ContactSection = () => {
         </p>
 
         <motion.form
-          action="https://formsubmit.co/humema.israr09@gmail.com"
+          action="https://formsubmit.co/54a26aec8427fd5ea0c290f18365eb68"
           method="POST"
           whileHover={{ scale: 1.01 }}
           className="contact-form"
@@ -31,7 +31,7 @@ const ContactSection = () => {
            <input
             type="hidden"
             name="_next"
-            value="https://thread-grace-website.vercel.app/thankpage"
+            value="https://the-embroidery-atelier.vercel.app/thankpage"
          />
 
 
