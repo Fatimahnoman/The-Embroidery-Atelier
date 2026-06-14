@@ -16,7 +16,8 @@ const Header = () => {
         <nav className="nav"data-aos="zoom-in-left">
             <Link href="/">Home</Link>
             <Link href="/about">About</Link>
-            <Link href="/shop">Shop</Link>
+            <Link href="/shop">Embroidery</Link>
+            <Link href="/beauty" style={{ color: '#d48166', fontWeight: 'bold' }}>Beauty Store</Link>
             <Link href="/contact">Contact us</Link>
             <Link href="/checkout" style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
               <PiShoppingCartSimpleFill  style={{fontSize: "25px", color: "rgb(175, 48, 109)" }}/>
