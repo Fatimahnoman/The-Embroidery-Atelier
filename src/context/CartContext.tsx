@@ -39,10 +39,51 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
   const [toast, setToast] = useState<ToastType>({ show: false, message: "" });
   const isInitialMount = useRef(true);
 
-  // ... (previous useEffects remain same)
+  // Load cart from localStorage on mount
+  useEffect(() => {
+    const savedCart = localStorage.getItem('threaded_grace_cart');
+    if (savedCart) {
+      try {
+        setCart(JSON.parse(savedCart));
+      } catch (e) {
+        console.error("Failed to parse cart", e);
+      }
+    }
+  }, []);
+
+  // Save cart to localStorage whenever it changes, but skip the first run
+  useEffect(() => {
+    if (isInitialMount.current) {
+      isInitialMount.current = false;
+      return;
+    }
+    try {
+      localStorage.setItem('threaded_grace_cart', JSON.stringify(cart));
+    } catch (e) {
+      console.error("Failed to save cart", e);
+    }
+  }, [cart]);
 
   const addToCart = (item: Product) => {
-    // ... (previous logic remains same)
+    try {
+      setCart((prevCart) => {
+        const existingItem = prevCart.find((i) => i.id === item.id);
+        if (existingItem) {
+          return prevCart.map((i) =>
+            i.id === item.id ? { ...i, quantity: i.quantity + 1 } : i
+          );
+        }
+        return [...prevCart, { ...item, quantity: 1 }];
+      });
+
+      setToast({ show: true, message: `${item.name} added to cart! ✨` });
+      
+      setTimeout(() => {
+        setToast({ show: false, message: "" });
+      }, 3000);
+    } catch (error) {
+      console.error("Error adding to cart", error);
+    }
   };
 
   const updateQuantity = (id: number, delta: number) => {
